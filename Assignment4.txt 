@@ -1,0 +1,129 @@
+ASSIGNMENT
+Subject: Cryptography and Network Security
+Topic: Introduction to Asymmetric Cryptography
+Course Code: BCA309T
+name = Bhoomika kalyan 
+Q1. Explain the basic principles of asymmetric (public-key) cryptography. Describe the roles of public and private keys and explain confidentiality, authentication, and non-repudiation. Illustrate with a diagram. 
+Authentication verifies the identity associated with a cryptographic key. Digital signatures help the receiver verify that a message was signed using the corresponding private key.
+5. Non-repudiation
+Non-repudiation provides evidence that a message was signed using a particular private key. It depends on secure private-key management and reliable identity verification.
+Diagram         ALICE (SENDER)
+               |
+          Plain Message
+               |
+       Bob's Public Key
+               |
+          [Encryption]
+               |
+         Ciphertext
+               |
+        Communication
+               |
+          [Decryption]
+               |
+       Bob's Private Key
+               |
+         Original Message
+               |
+           BOB (RECEIVER)
+Conclusion: Asymmetric cryptography supports secure communication through encryption, digital signatures, and public-key verification.
+Q2. Differentiate between symmetric and asymmetric cryptography under the headings of number of keys, key distribution, speed, key length, scalability, and applications 
+Uses one shared secret key for each communicating pair.
+Key distribution The secret key must be securely shared or established. The public key can be distributed openly, but its authenticity must be verified.
+Speed Generally very fast. Generally slower than symmetric cryptography.
+Key length Common examples are AES-128 and AES-256. Common examples include RSA-2048 and RSA-3072.
+Scalability Pairwise communication among n users can require n(n−1)/2 shared keys. Each user maintains a key pair, and public keys can be distributed to many users.
+Applications File encryption, disk encryption, VPNs, and data protection. Digital signatures, key establishment, certificates, and public-key encryption.
+Conclusion: Symmetric cryptography is suitable for fast data encryption, while asymmetric cryptography is useful for key establishment and authentication.
+Q3. Describe the mamain techniques and building blocks used in public-key cryptography, including trapdoor one-way functions, Diffie–Hellman key exchange, digital signatures, and PKI with digital certificates.
+Answer:
+Public-key cryptography uses several techniques to provide confidentiality, authentication, and secure key establishment.
+1. Trapdoor One-Way Functions
+A one-way function is easy to calculate but computationally difficult to reverse. A trapdoor is secret information that makes reversing the function practical.
+RSA relies on mathematical operations designed to be easy with the appropriate key but difficult to reverse without the private key.
+2. Diffie–Hellman Key Exchange
+Diffie–Hellman allows two parties to establish a shared secret over an insecure communication channel.
+Evidence that can support non-repudiation.
+4. Public-Key Infrastructure (PKI)
+PKI is a system for managing public keys and digital certificates.
+Its main components include:
+Certificate Authority (CA): Issues and signs digital certificates.
+Digital certificate: Associates an identity or domain name with a public key.
+Registration Authority (RA): May help verify identities before certificate issuance.
+Certificate validation: Checks the certificate chain, validity period, identity, and permitted uses.
+Revocation mechanisms: Help determine whether a certificate should no longer be trusted.
+Conclusion: These techniques work together to establish shared secrets, verify identities, and protect communication.
+Q4. Trace the historical development of public-key cryptography, including the key-distribution problem, Diffie and Hellman, RSA, classified GCHQ work, ElGamal, and 
+Answer:Taher ElGamal introduced a public-key cryptographic approach in the 1980s based on the discrete logarithm problem. ElGamal techniques influenced public-key encryption and digital signature systems.
+6. Elliptic Curve Cryptography (ECC)
+ECC uses mathematical operations on elliptic curves. It provides strong security with comparatively short keys.
+ECC is used in digital signatures and key agreement, particularly in modern communication systems.
+Conclusion: Public-key cryptography evolved from early key-distribution research into a fundamental technology used in secure internet communication.
+Q5. Discuss the aadvantages and disadvantages of asymmetric cryptography. Why do systems such as TLS combine asymmetric and symmetric algorithms?
+Asymmetric cryptography helps authenticate parties and establish or protect keys.
+Symmetric cryptography efficiently encrypts large amounts of data.
+Example: TLS
+When a user opens a secure website:
+The browser validates the website’s digital certificate.
+The browser and server perform an authenticated key exchange, commonly using ephemeral Diffie–Hellman.
+Both derive shared session keys.
+Symmetric authenticated encryption, such as AES-GCM or ChaCha20-Poly1305, protects the exchanged data.
+Conclusion: Hybrid cryptosystems combine the key-establishment and authentication benefits of public-key methods with the speed of symmetric encryption
+Q6. Describe the RSA algorithm in detail. Explain key generation, encryption, decryption, the formulas used, and why decryption correctly recovers the original message. Include a flowchart. 
+Answer:
+RSA is an asymmetric cryptographic algorithm developed by Rivest, Shamir, and Adleman. It uses a public key for encryption and a private key for decryption. RSA can also be used for digital signatures with appropriate signature schemes.
+1. RSA Key Generation
+Step 1: Choose two prime numbers
+Select two large, distinct prime numbers,  and .
+Step 2: Calculate the modulus n= p×q 
+The value n is included in both the public and private keys.
+Step 3: Calculate Euler’s totient
+Fie (n)=(p-1)(q-1)
+Here:
+ = encoded message
+ = public exponent
+ = modulus
+ = ciphertext
+3. RSA Decryption
+The receiver uses the private exponent  to recover the message:
+The receiver then decodes the result to obtain the original message.
+4. RSA Flowchart             START
+               |
+       Choose prime numbers
+             p and q
+               |
+         Calculate n = pq
+               |
+     Calculate φ(n) = (p−1)(q−1)
+               |
+        Choose public exponent e
+               |
+    Calculate private exponent d
+      ed ≡ 1 (mod φ(n))
+               |
+       Generate RSA key pair
+               |
+      Encode and encrypt message
+          c = m^e mod n
+               |
+       Send ciphertext to Bob
+               |
+       Decrypt using private key
+          m = c^d mod n
+               |
+       Recover original message
+               |
+              END
+Why RSA Decryption Works
+The private exponent is chosen so that:
+Therefore, for a message relatively prime to , Euler’s theorem helps establish that raising the ciphertext to the power  recovers the original message modulo . RSA’s mathematical properties also ensure correct recovery for other valid message values.
+Important: Real RSA uses very large primes and secure padding. RSA-OAEP is used for encryption; raw textbook RSA should not be used to protect real message
+Q7. What is meant by RSA key size? Explain the relationship between factoring and RSA security, compare RSA key sizes with ECC, and discuss quantum computing threats
+Ensure each key pair has its own independently generated modulus.
+Protect private keys with access controls and encryption at rest.
+Use maintained cryptographic libraries rather than implementing RSA yourself.
+Validate digital certificates and their permitted uses.
+Use side-channel-resistant implementations.
+Rotate and revoke keys when necessary.
+Plan for post-quantum migration when long-term confidentiality is important.
+Conclusion: RSA can provide strong security when properly implemented, but secure key generation, correct padding, adequate key sizes, and protection against implementation attacks are essential.
