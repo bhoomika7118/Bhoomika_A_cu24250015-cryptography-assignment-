@@ -1,0 +1,77 @@
+Here is a simple Question–Answer assignment on Cryptography and Network Security (BCA309T) based on your assignment. The answers use easy English and are suitable for writing in a college assignment notebook.
+Assignment: Introduction to Symmetric Cryptography
+Subject: Cryptography and Network Security
+Course: BCA
+Topic: Symmetric Encryption
+Q1. What is symmetric cryptography?
+Answer: Symmetric cryptography is a method of protecting information using the same secret key for encryption and decryption.
+Plaintext: The original readable message.
+Ciphertext: The encrypted message.
+Secret key: The key used to encrypt and decrypt data.
+Encryption: The process of converting plaintext into ciphertext.
+Decryption: The process of converting ciphertext back into plaintext.
+Diagram:
+Plaintext (Original Message)Diagram:
+Plaintext (Original Message)
+Encryption + Secret Key
+Ciphertext (Encrypted Message)
+Decryption + Same Secret Key
+Original Plaintext
+Kerckhoffs's principle states that a cryptographic system should remain secure even if its design is public, as long as the secret key remains.
+Q2. What is the difference between stream ciphers and block ciphers? Explain confusion and diffusion.
+Answer: A stream cipher enSuitable for continuous data. Suitable for files and messages.
+Example: ChaCha20. Example: AES.
+Confusion: It hides the relationship between the secret key and ciphertext.
+Diffusion: It spreads the influence of plaintext bits across the ciphertext.
+Main block cipher modes
+ECB: Encrypts each block separately. It is simple but reveals patterns.
+CBC: Combines each plaintext block with the previous ciphertext block before encryption.
+CFB: Uses previous ciphertext to encrypt data in a stream-like manner.
+OFB: Generates a keystream that is combined with plaintext.
+CTR: Uses a counter to generate a keystream. It is fast and supports parallel processing.
+These modes have different advantages and weaknesses. Modern applications should also use authentication to detect changes to encrypted data.
+Q3. Explain the history of symmetric encryption.
+Answer: Symmetric Symmetric encryption developed over many years.
+Caesar cipher: An ancient method that replaces each letter with another letter a fixed number of positions away.
+Enigma machine: An electromechanical encryption machine used by Germany during World War II.
+Claude Shannon: His work on information theory helped establish the foundations of modern cryptography.
+Feistel cipher: A design structure used in modern block ciphers.
+DES (1977): The Data Encryption Standard became an important encryption standard.
+Triple DES: It applied DES multiple times to improve security.
+IDEA and Blowfish: Other symmetric encryption algorithms developed to provide secure encryption.
+RC4: A stream cipher that was widely used but is now considered insecure.
+AES (2001): The Advanced Encryption Standard replaced DES for many applications and provides stronger security.
+Q4. Explain Caesar, monoalphabetic, Playfair and Vigenère ciphers.
+Answer: These are cla) Caesar cipher: Each letter is shifted by a fixed number of positions. For example, with a shift of 3, A becomes D and B becomes E. The word CAT becomes FDW.
+b) Monoalphabetic substitution cipher: Each letter is replaced by another letter according to a fixed substitution alphabet. It is more complex than Caesar but can be broken using letter-frequency patterns.
+c) Playfair cipher: It encrypts pairs of letters using a 5 × 5 letter table. It hides individual letter patterns better than simple substitution.
+d) Vigenère cipher: It uses a keyword to apply different letter shifts. It is stronger than Caesar but can be attacked if the keyword repeats.
+Frequency analysis is a method of studying how often letters occur in encrypted text. It works well against Caesar and monoalphabetic ciphers because they preserve letter-frequency patterns.
+Q5. Explain transposition ciphers, product ciphers and the one-time pad.
+ans - 2. Columnar Transposition Cipher: The message is written in rows under a keyword and read column by column in a specified order.
+3. Product Cipher: It combines substitution and transposition to improve security. Modern block ciphers use related principles of substitution and mixing.
+4. One-Time Pad: It uses a truly random secret key of the same length as the message. It is theoretically unbreakable if the key is random, kept secret and used only once. However, distributing and storing such long keys is difficult.
+ouestion 6) Q6. Explain the structure of DES.
+Right Half (32 bits)
+Expansion (32 to 48 bits)
+XOR with Round Key
+S-boxes and P-box
+XOR with Left Half to Produce New Right Half
+DES is now considered insecure for modern applications because its key is too short.
+Q7. Q7. Explain the strengths and weaknesses of DES. What are Double DES and Triple DES?
+It provides an avalanche effect, where a small change in input can change many output bits.
+It was widely used for secure communication.
+Weaknesses of DES:
+Its effective key length is only 56 bits.
+It can be broken using modern brute-force attacks.
+Differential and linear cryptanalysis can be used to study weaknesses in its design.
+Double DES: It applies DES encryption twice using two keys. However, it is vulnerable to a meet-in-the-middle attack, which reduces its expected security.
+Triple DES (3DES): It applies DES three times. It was developed to improve security over DES. It can use two or three independent keys, but it is slow and has a small block size. AES is preferred for modern applications.
+Q8. Explain AES and compare it with DES?
+Block size 64 bits 128 bits
+Key size 56 effective bits 128, 192 or 256 bits
+Structure Feistel network Substitution–permutation network
+Rounds 16 10, 12 or 14
+Security Insecure today Secure when properly implemented
+Performance Generally slower in modern systems Generally faster in modern systems
+Conclusion: AES is more secure than DES and is widely used for protecting files, communications and other digital information.
